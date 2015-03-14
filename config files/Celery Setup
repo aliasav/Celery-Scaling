@@ -1,0 +1,40 @@
+*Test 1: 18th Feb 2015
+
+*Fired up 2 DO servers:
+	1. 128.199.116.114 : RabbitMQ and Celery server
+	2. 128.199.97.200 : Codebase
+
+*Modules included in celery.py: 'reminders.tasks','customers.tasks','campaign.tasks','billing.tasks', 'recipient.tasks'
+
+*Tasks registered: 12
+[tasks]
+. billing.tasks.add_credits
+. billing.tasks.deactivate_expired_customer_purchases_and_realted_recipient_reminders
+. campaign.tasks.deactivate_expired_campaigns
+. customers.tasks.send_miss_call_verification_message
+. customers.tasks.send_sms_set_reminder_for_me
+. customers.tasks.sendmail_task
+. reminders.tasks.clean_voice_messages
+. reminders.tasks.make_phone_call_to_recepient
+. reminders.tasks.send_mail
+. reminders.tasks.send_reminders
+. reminders.tasks.send_sms_to_recepient
+. reminders.tasks.send_whatsapp_message_to_recepient
+
+*Proposed Queues:
+1. Periodic tasks queue
+2. SMS reminders queue
+3. Phone call reminders queue
+4. Whatsapp reminders queue
+5. Mail reminders queue
+6. Billing queue
+7. Generic queue
+
+*Routes:
+	Define all routes in settings.py
+	Example: 'app.tasks.A': {'queue': 'A1', 'routing_key': 'XYZ'}
+
+*Test for send_sms:
+	Test function prepared in reminders.utils.
+	Sleuth URL used.
+	Delay added in function to replicate original function delay: 1.1 sec (average of 10 function calls) 
