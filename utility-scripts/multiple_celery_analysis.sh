@@ -35,7 +35,7 @@ do
 	workers[$i]=$(awk 'NR==1{print $3}' "$nodes"/"node$i")
 	concurrency[$i]=$(awk 'NR==2{print $3}' "$nodes"/"node$i")
 done
-
+echo -e "\n\n"
 # display individual node analysis and populate start time, end time, total time, execution rates, tasks completed, effeciency arrays
 for (( i=0; i<$n; i++ ))
 do
@@ -79,6 +79,7 @@ do
 	echo "Time taken          : "$total_time
 	echo "Task execution rate : "$execution_rate
 	echo "Effeciency          : "$effeciency
+	echo -e "\n\n"
 done
 
 # calculate global information
@@ -133,11 +134,10 @@ for (( i=0; i<$n; i++ ))
 do
 	l=$(( 3 + $i ))
 	ip=$(sed -e $l'q;d' $get_servers)
-	ssh root@$ip echo '' > /home/cod/workspace/development/cod/hod_app/development.log
+	ssh root@$ip 'echo " " > /home/cod/workspace/development/cod/hod_app/development.log'
 
 done
 
 # clean up tmp files
 rm -f /tmp/celery/logfiles/*
 rm -f /tmp/celery/celery_nodes_settings_files/*
-rm -f /tmp/celery/get_servers

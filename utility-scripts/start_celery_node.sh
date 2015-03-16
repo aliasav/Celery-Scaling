@@ -25,9 +25,8 @@ rm -f /home/cod/workspace/development/cod/hod_app/celery_stop.sh
 touch /home/cod/workspace/development/cod/hod_app/celery_stop.sh
 # here doc for /home/cod/workspace/development/cod/hod_app/celery_stop.sh
 cat << EOF >> /home/cod/workspace/development/cod/hod_app/celery_stop.sh
-python manage.py celery multi stop $n -l INFO -c $c --logfile=$LOGFILE --app=hod_app.celery.cod
+python manage.py celery multi stop $n -l INFO -c $c --logfile=$LOGFILE --pidfile=/tmp/celery%n.pid --app=hod_app.celery.cod
 rm -f /tmp/celery_node_settings
-rm -f /tmp/
 EOF
 
 
@@ -42,6 +41,6 @@ echo "c = $c" >> /tmp/celery_node_settings
 
 # starting celery node
 cd /home/cod/workspace/development/cod/hod_app/
-source /home/aliasav/COD/virtualenvs/cod/bin/activate
+source /home/cod/workspace/envs/cod/bin/activate
 python manage.py celery multi start $n -l INFO -c $c --logfile=$LOGFILE  --pidfile=/tmp/celery%n.pid --app=hod_app.celery.cod -Ofair
 echo "-------------------------|| WHEN DONE, KILL NODE USING 'celerystop' ||-------------------------"

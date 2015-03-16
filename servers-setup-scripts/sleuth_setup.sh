@@ -121,7 +121,7 @@ scp /home/aliasav/COD/hod/ops/orchestration/app_install/zabbix_integration/agent
 yum -y install zabbix-agent --nogpgcheck
 
 # changing server IPs in /etc/zabbix/zabbix_agentd.conf
-sed -i '/Server=127.0.0.1/c\Server=103.16.141.93' /etc/zabbix/zabbix_agentd.conf
+sed -i '/Server=127.0.0.1/c\Server=128.199.87.191' /etc/zabbix/zabbix_agentd.conf
 sed -i '/ServerActive=127.0.0.1/c\#ServerActive=127.0.0.1' /etc/zabbix/zabbix_agentd.conf
 service zabbix-agent restart
 

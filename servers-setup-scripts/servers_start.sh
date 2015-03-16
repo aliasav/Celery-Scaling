@@ -96,7 +96,7 @@ do
 	echo -e "\n********************|| COPYING ZABBIX REPO AND SETUP SCRIPT INTO $codebase ||********************\n"
 	# copying zabbix agent repo and setup script to codebase
 	scp /home/aliasav/COD/hod/ops/orchestration/app_install/zabbix_integration/agent/zabbix.repo  root@$codebase:/etc/yum.repos.d/zabbix.repo
-	scp /home/aliasav/COD/hod/hod_app/Celery-Scaling/servers-setup-scripts/codebase_setup.sh root@$codebase:/home/cod/
+	scp /home/aliasav/COD/hod/hod_app/Celery-Scaling/servers-setup-scripts/codebase_setup.sh root@$codebase:/home/
 
 	echo -e "\n********************|| COPYING MySQL RPMs INTO $codebase ||********************\n"
 	# copying mysql rpms into server

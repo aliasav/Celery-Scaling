@@ -32,7 +32,8 @@ echo '****************|| SETTING UP BLAZECOD ||****************'
 touch /home/cod/workspace/blazecod.sh
 # here doc for blazecod.sh
 cat << EOF >> /home/cod/workspace/blazecod.sh
-source /home/cod/workspace/envs/cod/bin/activate 
+source /home/cod/workspace/envs/cod/bin/activate
+cd /home/cod/workspace/development/cod/ 
 EOF
 chmod 777 /home/cod/workspace/blazecod.sh
 # adding blazecod alias to /root/.bashrc
@@ -72,7 +73,7 @@ service iptables restart
 echo '****************|| SETTING UP ZABBIX ||****************'
 yum -y install zabbix-agent --nogpgcheck
 # changing server IPs in /etc/zabbix/zabbix_agentd.conf
-sed -i '/Server=127.0.0.1/c\Server=103.16.141.93' /etc/zabbix/zabbix_agentd.conf
+sed -i '/Server=127.0.0.1/c\Server=128.199.87.191' /etc/zabbix/zabbix_agentd.conf
 sed -i '/ServerActive=127.0.0.1/c\#ServerActive=127.0.0.1' /etc/zabbix/zabbix_agentd.conf
 service zabbix-agent restart
 
