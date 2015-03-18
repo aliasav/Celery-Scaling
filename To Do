@@ -1,0 +1,4 @@
+To Do:
+
+1. Port server setup scripts from bash to ansible and fabric.
+2. Investigate multiple nodes scenario using seperate producer and consumers configuration. 
